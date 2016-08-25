@@ -1,23 +1,23 @@
-import json
+from pymongo import MongoClient
+import datetime
+
+client = MongoClient()
+db = client.allspice
+recipes = db.recipes
+
+recipe = {
+    'name':'Spaghetti',
+    'description':'A wonderful spaghetti recipe',
+    'ingredients':['spaghetti','sauce','basil'],
+    'steps':['cook spaghetti','add sauce','add basil'],
+    'tags':['pasta','quick','easy'],
+    'notes':'Remember the spaghetti',
+    'date': datetime.datetime.utcnow()
+}
+
+recipes.insert_one(recipe)
+
+print(recipes.find_one())
 
 def getRecipe():
     pass
-
-def makeRecipe(name,ingredients,steps,notes):
-    data = {
-        'name':name,
-        'ingredients':ingredients,
-        'steps':steps,
-        'notes':notes
-    }
-    return json.dumps(data)
-
-def openRecipe(recipe):
-    return json.load(data)
-
-def main():
-    example = makeRecipe('Spaghetti',['Pack of Spaghetti','Sauce','Coriander'],'Cook Spaghetti','Remember the Spaghetti')
-    print(example)
-
-if __name__ == '__main__':
-    main()
