@@ -1,5 +1,8 @@
 import json
 
+def getRecipe()
+
+
 def makeRecipe(name,ingredients,steps,notes):
     data = {
         'name':name,
