@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 import datetime
 import sys
 
@@ -25,6 +26,7 @@ def getRecipe(rid):
         return recipe
     except:
         print(sys.exc_info()[0])
+        print(rid)
 
 def AddRecipe(name, description, ingredients, steps, tags, notes):
     r = {
