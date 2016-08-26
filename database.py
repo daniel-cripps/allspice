@@ -20,13 +20,8 @@ recipes = db.recipes
 # print(recipes.find_one())
 
 def getRecipe(rid):
-    # IDEA: Add more query options beyond just _id
-    try:
-        recipe = recipes.find_one({'_id': ObjectId(rid)})
-        return recipe
-    except:
-        print(sys.exc_info()[0])
-        print(rid)
+    recipe = recipes.find_one({'_id': ObjectId(rid)})
+    return recipe
 
 def AddRecipe(name, description, ingredients, steps, tags, notes):
     r = {
